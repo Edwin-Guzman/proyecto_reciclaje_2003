@@ -6,16 +6,20 @@ import tensorflow as tf
 from PIL import Image
 
 st.set_page_config(page_title="Reciclaje IA-ISC", layout="centered")
-st.title("Modelo predictivo Reciclaje clase de IA-ISC-Campus Comayagua-2026-Edwin-Guzman")
+st.title("Modelo predictivo Reciclaje clase de IA-ISC-Campus Comayagua-2026-Joksan-Zavala")
 st.write("Suba una imagen para clasificar con el modelo MobileNetV2 pre entrenado")
 
 IMG_SIZE = (224, 224)
-MODEL_DIR=Path("modelo_reciclaje_mobilenet")
-CLASS_PATH=MODEL_DIR/"_class_names.json"
-MODEL_PATH=[MODEL_DIR/"waste_mobile_net.h5", MODEL_DIR/"waste_mobile_net.keras"]
 
-LABELS_ES={
-  "cardboard": "Cartón",
+MODEL_DIR = Path("Proyecto")
+
+CLASS_PATH = MODEL_DIR / "_class_names.json"
+
+MODEL_PATH = [MODEL_DIR / "waste_mobile_net.h5", MODEL_DIR / "waste_mobile_net.keras"]
+
+
+LABELS_ES = {
+    "cardboard": "Cartón",
     "glass": "Vidrio",
     "metal": "Metal",
     "paper": "Papel",
@@ -28,7 +32,7 @@ def cargar_modelo():
     for path in MODEL_PATH:
         if path.exists():
             return tf.keras.models.load_model(path, compile=False)
-    st.error("No se encontró el modelo. Coloque la carpeta modelo_reciclaje_mobilenet junto a app.py.")
+    st.error(f"No se encontró el modelo. Verifique que los archivos estén dentro de la carpeta '{MODEL_DIR}'.")
     st.stop()
 
 @st.cache_data
