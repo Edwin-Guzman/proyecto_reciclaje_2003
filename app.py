@@ -11,12 +11,16 @@ st.write("Suba una imagen para clasificar con el modelo MobileNetV2 pre entrenad
 
 IMG_SIZE = (224, 224)
 
+# --- CORRECCIÓN DE RUTAS Y NOMBRES ---
+# Apuntamos a tu carpeta real "Proyecto"
 MODEL_DIR = Path("Proyecto")
 
+# Coincide con el nombre '_class_names.json' de tu GitHub
 CLASS_PATH = MODEL_DIR / "_class_names.json"
 
+# Coincide con 'waste_mobile_net.h5' y 'waste_mobile_net.keras' de tu GitHub
 MODEL_PATH = [MODEL_DIR / "waste_mobile_net.h5", MODEL_DIR / "waste_mobile_net.keras"]
-
+# --------------------------------------
 
 LABELS_ES = {
     "cardboard": "Cartón",
